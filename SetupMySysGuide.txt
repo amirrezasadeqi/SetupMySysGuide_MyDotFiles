@@ -1,0 +1,54 @@
+###############################################################################
+###############################################################################
+               __  __         ____  _                   _        
+              |  \/  |_   _  / ___|| |_ ___ _ __  ___  | |_ ___  
+              | |\/| | | | | \___ \| __/ _ \ '_ \/ __| | __/ _ \ 
+              | |  | | |_| |  ___) | ||  __/ |_) \__ \ | || (_) |
+              |_|  |_|\__, | |____/ \__\___| .__/|___/  \__\___/ 
+                      |___/                |_|                   
+         ____       _                 ____            _                 
+        / ___|  ___| |_ _   _ _ __   / ___| _   _ ___| |_ ___ _ __ ___  
+        \___ \ / _ \ __| | | | '_ \  \___ \| | | / __| __/ _ \ '_ ` _ \ 
+         ___) |  __/ |_| |_| | |_) |  ___) | |_| \__ \ ||  __/ | | | | |
+        |____/ \___|\__|\__,_| .__/  |____/ \__, |___/\__\___|_| |_| |_|
+                             |_|            |___/                       
+
+                                
+                        Name: Amir Reza Sadeghi
+                        Email: e.a.sadeqi@gmail.com
+                        Date: So 17. Mai 03:55:54 CEST 2020
+                            
+###############################################################################
+###############################################################################
+
+So I want to fully switch to manjaro linux. And Also I want to Standardize my steps
+to setup my workspace to save more time. may be in the future automize it. Note that
+I will use manjaro KDE and in a distinct session i3 window manager.
+
+so after installing manjaro linux and after Update the system I will do:
+    
+    1. move the window buttons to left in KDE.
+    2. Active AUR and select the check for updates box.
+    3. Kate->Settings->Configure Kate->Editing->General->Input Mode->Select Vi Input Mode.
+    4. install tmux(OFR) and tmux-bash-completion(AUR).
+    5. install powerline and powerline-fonts from OFR, then add below to your ~/.bashrc file to enable it in terminal:
+        powerline-daemon -q
+        POWERLINE_BASH_CONTINUATION=1
+        POWERLINE_BASH_SELECT=1
+        . /usr/share/powerline/bindings/bash/powerline.sh
+    and add below to your ~/.tmux.conf to enable status line in tmux sessions:
+        source /usr/lib/python3.8/site-packages/powerline/bindings/tmux/powerline.conf
+    6. install figlet from OFR to print text banners line the one at top of this file.
+    7. install neovim from OFR.
+    8. install i3-wm, i3lock, i3status from OFR(i think i installed dmenu Also from OFR).
+    9. Go to System Settings-> Hardware Configuration -> Atuo Install Proprietary Driver. this installs hybrid bumblebee GPU Drivers.
+    10. in Steam add this to launch options of Counter Strike to enable nvidia GPU (As I Know, but it is not good yet as windows games):
+        primusrun steam steam://rungameid/730
+    11. in System Settings go to Input Devices->keyboard->layouts and add German(QWERTY) and Persian Keyboards and Meta+Space as Alternative Shortcut to change the Languages.
+    12. Setup Git:
+        git is installed by default so you just run below commands in terminal:
+        git config --global user.name "username"
+        git config --global user.email email@example.com
+        git config --global core.editor nvim
+    !!! NOTE !!! : Till here I used GUI package manager and I as I remember I install all Optional dependency for installed Packages.
+
