@@ -44,6 +44,22 @@ so after installing manjaro linux and after Update the system I will do:
     9. Go to System Settings-> Hardware Configuration -> Atuo Install Proprietary Driver. this installs hybrid bumblebee GPU Drivers.
     10. in Steam add this to launch options of Counter Strike to enable nvidia GPU (As I Know, but it is not good yet as windows games):
         primusrun steam steam://rungameid/730
+	Update(Fr 22. Mai 01:43:49 CEST 2020):
+		As I mentioned the performance of the bumblebee is not as good as windows. so i was not interested in it. so i find two way to get the better performance:
+			1. using optimus-manager: the instruction to setup this can be found at below link:
+				https://github.com/Askannz/optimus-manager
+			i like the way how it works and has GUI interface and hybrid support and easy switch between intel and nvidia. like in windows. but like in windows
+			i have a problem in steam games like CSGO. I think the Nvidia card gets too hot and system suddenly shuts down. so i love this option but i can't use
+			it on this system.
+			2. Set up PRIME with NVIDIA proprietary driver(I use This): the instruction to setup this can be found at below link:
+				https://forum.manjaro.org/t/howto-set-up-prime-with-nvidia-proprietary-driver/40225
+			this way has good performance on games and has not the problem of the first way. but nvidia and intel are both ON and so power consumption is high, but
+			i think(i think!!!) this feature in my system solves the problem of first way, because i think!!! in this way the computation loads divide between intel
+			and nvidia so the temperature of nvidia and laptop does not go high and system does not shut down suddenly(this is my think!!!).
+		in each situation i uninstalled video-linux and bumblebee drivers and installed video-nvidia-418xx(using manjaro system settings).
+		!!! NOTE !!! : I you have done something wrong and manjaro does not boot and after asus logo shows just black screen, don't be afraid. in grub boot menu list on
+		manjaro press "e" and then at the end of linux line add "3" then press F10. so you will go to tty session. in there using "nmcli" connect to internet or your wifi
+		and then solve the problem, e.g. using mhwd uninstall all video drivers and install bumblebee and then reboot. so you can boot to your manjaro!
     11. in System Settings go to Input Devices->keyboard->layouts and add German(QWERTY) and Persian Keyboards and Meta+Space as Alternative Shortcut to change the Languages.
     12. Setup Git:
         git is installed by default so you just run below commands in terminal:
