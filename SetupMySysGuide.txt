@@ -66,5 +66,10 @@ so after installing manjaro linux and after Update the system I will do:
         git config --global user.name "username"
         git config --global user.email email@example.com
         git config --global core.editor nvim
+    13. Customize the i3:
+    		1. install polybar from OFR to create a clean bar for i3.
+		2. setup XDG base directory for config files which is a nice thing to have a clean system:
+			add below line at the end of your ~/.bashrc file:
+				export XDG_CONFIG_HOME=${HOME}/.config
     !!! NOTE !!! : Till here I used GUI package manager and I as I remember I install all Optional dependency for installed Packages.
 
