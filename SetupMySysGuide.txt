@@ -71,5 +71,39 @@ so after installing manjaro linux and after Update the system I will do:
 		2. setup XDG base directory for config files which is a nice thing to have a clean system:
 			add below line at the end of your ~/.bashrc file:
 				export XDG_CONFIG_HOME=${HOME}/.config
+		3. here i have switched to 14 to customize kde and i will sitch to here to continue the i3 customization.
+    14. Customize KDE:
+    		!!!NOTE!!!: I have some problems with customization. in before versions of my kde installation i had more options for example in transparency settings, but they are deleted now and 
+		i could not find them now. in the future i will improve it.
+
+    		Note that I am following the bellow links so if somethings droped go to them:
+			1. https://www.youtube.com/watch?v=kotYskfykl0
+			2. https://www.youtube.com/watch?v=OBCBqEC6sS8&feature=youtu.be
+		1. Go to System Settings->Appearance->Global Theme and Install McMojave LAF and Apply it to system.
+    		2. under Cursors install OSX El Capitan and apply it.
+		3. go to Application Style->Configure GNOME ... -> install for GTK3 McHigh Sierra and Apply it to both GTK2 and GTK3.
+		4. in window decoration Tab Configure your window top pannel buttons.
+		!!NOTE!! i have some problem with window decorations not solved yet. in non maximized window i have some wierd pannel transparency. the best i have succeded to get is by installing
+		ArcOSX Black Transparent and Macteria themes for window decoration. at the momment i have applied Macteria.
+		5. install Kvantum Manager (Kvantum-qt5) from OFR and apply McMojave theme and check Transparent Menu Title bar and adjust the window opacity and menu opacity respectivly by 5 and 15 
+		percents and then save them. tweak these values to get better transparency.
+		6. go to Startup and shut down and apply McMojave for SDDM login Screen.
+		7. add a new empty pannel and install new widgets chili clock and application title. then add all of the things that you want in the panel.
+			1. application launcher 2. application title 3. global menu 4. notifications 5. search 6. chili clock 7. audio 8. networks 9. battery and brightness 10. system trays
+			!note!: in keyboard settings change show label to show flag to show the flag of the use language.
+			configure application title to show application name and chech the Bold Box.
+			configure chili clock to use fixed font size 14 and not to use 24 hour scale.
+			configure system trays to not show repetitive things.
+		8. install Latte (latte-dock) from OFR. Do some ricing on it.
+		9. in system settings enable wobbly windows and magic lamp for nice window effects.
+		10. check the no feedback box in system settings-> applications-> launch feedback.
+		11. follow bellow link to remove title bar on max window:
+			https://www.youtube.com/watch?v=uyz4-KZOzyI
+		12. install dracula theme for konsole from bellow link:
+			https://draculatheme.com/konsole/
+		    and add transparency in settings->Edit Current Profile->Edit->... and adjust it to 20 percent.
+
+
+
     !!! NOTE !!! : Till here I used GUI package manager and I as I remember I install all Optional dependency for installed Packages.
 
