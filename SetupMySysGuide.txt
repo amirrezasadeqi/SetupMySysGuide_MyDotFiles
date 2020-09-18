@@ -102,6 +102,14 @@ so after installing manjaro linux and after Update the system I will do:
 		12. install dracula theme for konsole from bellow link:
 			https://draculatheme.com/konsole/
 		    and add transparency in settings->Edit Current Profile->Edit->... and adjust it to 20 percent.
+    15. now the default fonts of manjaro make me to tear. so let's make it good:
+    	1. I have downloaded all the fonts in "https://developer.apple.com/fonts/" from some github repos that i found them by searching in google. these are apple fonts for mac osx.
+	2. Copy the Folder that contains the *.otf or *.ttf files to /usr/share/fonts/ to use it system wide. i checked the system settings and the fonts are available there. it may be needed to execute
+	" fc-cache " to update font cache so i think the fonts would be available in the system settings.
+	3. The Fonts that i will install, would be:
+		1. SF Pro 2. SF Mono 3. New York (From Apple Fonts)
+		4. fonts are not in terminal settings...
+		
 
 
 
