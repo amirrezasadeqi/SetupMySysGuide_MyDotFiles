@@ -1,0 +1,10 @@
+#!/bin/bash
+set -euo pipefail
+if pgrep -x i3 >/dev/null; then
+    /usr/bin/dunst
+else
+    /usr/bin/plasma_waitforname org.freedesktop.Notifications
+fi
+#comment: /usr/bin/select_notifier
+#must be executable: sudo chmod a+x /usr/bin/select_notifier
+
