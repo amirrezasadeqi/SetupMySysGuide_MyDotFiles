@@ -1,0 +1,83 @@
+#comment: this is the json file to produce the dynamic mojave wallpaper for using with "https://github.com/zzag/plasma5-wallpapers-dynamic" package on AUR. you can have better experience with the times tuned better.
+[
+    {
+        "CrossFade" : true,
+        "Time" : "03:00",
+        "FileName": "1.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "04:30",
+        "FileName": "2.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "06:00",
+        "FileName": "3.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "07:30",
+        "FileName": "4.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "09:00",
+        "FileName": "5.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "10:30",
+        "FileName": "6.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "12:00",
+        "FileName": "7.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "13:30",
+        "FileName": "8.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "15:00",
+        "FileName": "9.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "16:30",
+        "FileName": "10.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "18:00",
+        "FileName": "11.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "19:30",
+        "FileName": "12.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "21:00",
+        "FileName": "13.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "22:30",
+        "FileName": "14.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "00:00",
+        "FileName": "15.jpeg"
+    },
+    {
+        "CrossFade" : true,
+        "Time" : "01:30",
+        "FileName": "16.jpeg"
+    }
+    ]
