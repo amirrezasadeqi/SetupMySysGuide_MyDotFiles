@@ -3,12 +3,18 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/areza/.oh-my-zsh"
-export TERM="xterm-256color"
+
+# these 3 lines must be set by the terminal emulator itself
+# for example st, tmux, xterm ....
+# uncomment in necessary momments.
+#export TERM="xterm-256color"
+#export TERM="tmux-256color"
+#export TERM="st-256color"
 
 #powerlevel custom settings
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time anaconda)
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_OS_ICON_BACKGROUND="white"
 POWERLEVEL9K_OS_ICON_FOREGROUND="black"
@@ -89,6 +95,13 @@ plugins=(
 	ros
 	tmux
 	vi-mode
+	command-not-found
+	# custom plugin for conda completion.
+	# you must clone its repo for usage. run bellow command for it:
+	# git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
+	# for more information go to the top of the "_conda" file in its repository.
+	conda-zsh-completion
+	fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -118,3 +131,64 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+#####################################################################
+#####################################################################
+
+# set vi-mode visual for full neovim command editing environment
+export VISUAL="nvim"
+
+#####################################################################
+#####################################################################
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/areza/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/areza/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/areza/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/areza/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+#####################################################################
+#####################################################################
+
+source /opt/ros/noetic/setup.zsh
+
+#####################################################################
+#####################################################################
+
+# <<< PlatformIO commands to be available >>>
+export PATH=$PATH:~/.platformio/penv/bin
+
+#####################################################################
+#####################################################################
+
+# fzf plugin for zsh
+export FZF_BASE=/usr/bin/fzf
+DISABLE_FZF_AUTO_COMPLETION="false"
+DISABLE_FZF_KEY_BINDINGS="true"
+# from : https://github.com/junegunn/fzf/issues/546
+bindkey '^T' fzf-file-widget
+bindkey '^R' fzf-history-widget
+bindkey '^J' fzf-cd-widget
+
+#####################################################################
+#####################################################################
+
+# from : https://github.com/junegunn/fzf
+# installation script has added this bellow line. note that in the main repo
+# it is recommended to use this script for both bash and zsh for full support.
+# distro binaries does not have some features by default.
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+#####################################################################
+#####################################################################
+
