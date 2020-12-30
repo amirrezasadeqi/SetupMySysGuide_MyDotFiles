@@ -173,11 +173,18 @@ export PATH=$PATH:~/.platformio/penv/bin
 # fzf plugin for zsh
 export FZF_BASE=/usr/bin/fzf
 DISABLE_FZF_AUTO_COMPLETION="false"
-DISABLE_FZF_KEY_BINDINGS="true"
+
+# After solving the conflicts of st terminal clipcopy and fzf key bindings now
+# we can use the default key bindings of fzf on zsh.
+DISABLE_FZF_KEY_BINDINGS="false"
+
+# you can also disable the default key bindings and define them for yourself by
+# uncommenting the bellow lines.
 # from : https://github.com/junegunn/fzf/issues/546
-bindkey '^T' fzf-file-widget
-bindkey '^R' fzf-history-widget
-bindkey '^J' fzf-cd-widget
+# DISABLE_FZF_KEY_BINDINGS="true"
+# bindkey '^T' fzf-file-widget
+# bindkey '^R' fzf-history-widget
+# bindkey '^J' fzf-cd-widget
 
 #####################################################################
 #####################################################################
@@ -187,6 +194,60 @@ bindkey '^J' fzf-cd-widget
 # it is recommended to use this script for both bash and zsh for full support.
 # distro binaries does not have some features by default.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# from : https://github.com/junegunn/fzf/wiki/Examples#cd
+# to have as same as bash options on zsh. for example you can change through
+# parent directories (i think! I have not used them yet).
+#####################################################################
+# fd - cd to selected directory
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+# fda - including hidden directories
+fda() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
+
+# fdr - cd to selected parent directory
+fdr() {
+  local declare dirs=()
+  get_parent_dirs() {
+    if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
+    if [[ "${1}" == '/' ]]; then
+      for _dir in "${dirs[@]}"; do echo $_dir; done
+    else
+      get_parent_dirs $(dirname "$1")
+    fi
+  }
+  local DIR=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf-tmux --tac)
+  cd "$DIR"
+}
+
+# cf - fuzzy cd from anywhere
+# ex: cf word1 word2 ... (even part of a file name)
+# zsh autoload function
+cf() {
+  local file
+
+  file="$(locate -Ai -0 $@ | grep -z -vE '~$' | fzf --read0 -0 -1)"
+
+  if [[ -n $file ]]
+  then
+     if [[ -d $file ]]
+     then
+        cd -- $file
+     else
+        cd -- ${file:h}
+     fi
+  fi
+}
+#####################################################################
+
 
 
 #####################################################################

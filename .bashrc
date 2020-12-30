@@ -178,6 +178,14 @@ export VISUAL="nvim"
 
 # bash is a little fucky at Alt-C or fzf-cd-widget so i found these 4 commands
 # from : https://github.com/junegunn/fzf/wiki/Examples#cd
+# Update: The cause of this bug was actually the conflict of Alt-C with config
+# of st terminal for clipcopy key bind. So I changed that to Alt-b in the 'config.h'
+# file or 'st_config.h' in this repository. now Alt-c works fine in the bash. so
+# we don't need bellow functions but for completeness I don't remove them. Also 
+# I add them to '.zshrc' file to have the same behavior in bash and zsh. Note that
+# by solving this conflict the Alt-C works fine in zsh and we will use the same 
+# default key bindings of fzf in zsh.
+
 ##############################################################################
 # fd - cd to selected directory
 fd() {
