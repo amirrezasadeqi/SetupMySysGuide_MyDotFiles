@@ -1,3 +1,7 @@
+# ~/.zshrc
+# https://github.com/ohmyzsh/ohmyzsh
+# https://github.com/ohmyzsh/ohmyzsh/wiki
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -91,6 +95,8 @@ plugins=(
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	docker
+	#docker-compose
+	#docker-machine
 	z
 	ros
 	tmux
@@ -102,6 +108,21 @@ plugins=(
 	# for more information go to the top of the "_conda" file in its repository.
 	conda-zsh-completion
 	fzf
+	#git-prompt
+	#git-extras # install git-extras from pamac manager and uncomment this to use
+	#git-flow
+	#git-flow-avh
+	# use bellow address to install gitflow for dependency of git-hubflow plugin 
+	# https://github.com/datasift/gitflow#installation
+	# https://datasift.github.io/gitflow/
+	#git-hubflow
+	#gitignore # at the end of this file gi function for dependency of gitignore is added. you must install gi function before use this plugin.
+	#pip
+	#themes
+	#zsh_reload # To reload the zsh session, just run src
+	#battery
+	#kate
+	#ssh-agent # have some settings. for more info go to : https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -246,10 +267,26 @@ cf() {
      fi
   fi
 }
-#####################################################################
-
 
 
 #####################################################################
 #####################################################################
+
+# This is for gi command that automatically generates the '.gitignore' file
+# for various types of projects. Bellow addresses are related to this command
+# https://www.toptal.com/developers/gitignore
+# https://docs.gitignore.io/install/command-line
+function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
+
+#####################################################################
+#####################################################################
+
+
+
+
+#####################################################################
+#####################################################################
+
+
+
 
