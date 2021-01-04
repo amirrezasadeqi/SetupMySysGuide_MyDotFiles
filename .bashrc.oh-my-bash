@@ -152,6 +152,12 @@ export PATH=$PATH:~/.platformio/penv/bin
 # enable vim mode in bash shell
 set -o vi
 export VISUAL="nvim"
+# bind 'ii' to 'ESC'(not actually to this key, actually to the function of
+# changing to this mode. i said the key to explaine it.) in bash. like we have in vim/nvim
+# from: https://unix.stackexchange.com/questions/74075/custom-key-bindings-for-vi-shell-mode-ie-set-o-vi
+bind '"ii":vi-movement-mode'
+# unbind default key bind to this mode which is 'ESC' if you want.
+# bind -r "\e"
 
 # this line is added by installer script of fzf from:
 # https://github.com/junegunn/fzf
