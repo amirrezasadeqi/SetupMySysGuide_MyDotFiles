@@ -164,6 +164,7 @@ export VISUAL="nvim"
 # from: https://unix.stackexchange.com/questions/101182/bind-key-sequence-to-escape-zsh
 bindkey ii vi-cmd-mode
 # unbind default key bind to this mode which is 'ESC' if you want.
+# from: https://unix.stackexchange.com/questions/285208/how-to-remove-a-zsh-keybinding-if-i-dont-know-what-it-does
 # bindkey -r "^["
 
 
