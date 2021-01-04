@@ -159,6 +159,14 @@ source $ZSH/oh-my-zsh.sh
 # set vi-mode visual for full neovim command editing environment
 export VISUAL="nvim"
 
+# bind 'ii' to 'ESC'(not actually to this key, actually to the function of
+# changing to this mode. i said the key to explaine it.) in zsh. like we have in vim/nvim
+# from: https://unix.stackexchange.com/questions/101182/bind-key-sequence-to-escape-zsh
+bindkey ii vi-cmd-mode
+# unbind default key bind to this mode which is 'ESC' if you want.
+# bindkey -r "^["
+
+
 #####################################################################
 #####################################################################
 
