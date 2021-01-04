@@ -1,6 +1,8 @@
 #
 # ~/.bashrc
 #
+# this file is bash configuration without oh-my-bash. currently i use 
+# oh-my-bash. nice and simpler to add new features and plugins.
 
 [[ $- != *i* ]] && return
 
@@ -234,6 +236,15 @@ cf() {
      fi
   fi
 }
+
+###############################################################################
+###############################################################################
+
+# The function for gitignore file automation from:
+# https://docs.gitignore.io/install/command-line
+function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}
+
+###############################################################################
 ###############################################################################
 
 
