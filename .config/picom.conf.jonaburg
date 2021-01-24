@@ -29,6 +29,8 @@ rounded-corners-exclude = [
   "class_g = 'firefox'",
   "class_g = 'Thunderbird'",
   "class_g = 'i3bar'",
+  "class_g = 'dwm'",
+  "class_g = 'dmenu'"
 #  "class_g = 'albert'"
 ];
 round-borders = 1;
@@ -225,7 +227,9 @@ opacity-rule = [
   "90:class_g = 'St' && focused",
   "60:class_g = 'St' && !focused",
   "70:class_g = 'albert'",
-  "90:class_g = 'i3bar'"
+  "90:class_g = 'i3bar'",
+  "90:class_g = 'dwm'",
+  "90:class_g = 'dmenu'"
 ];
 
 
