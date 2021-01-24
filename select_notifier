@@ -1,6 +1,12 @@
 #!/bin/bash
+
+# /usr/bin/select_notifier
+# 2021-01-24 04:27
+
 set -euo pipefail
 if pgrep -x i3 >/dev/null; then
+    /usr/bin/dunst
+elif pgrep -x dwm >/dev/null; then
     /usr/bin/dunst
 else
     /usr/bin/plasma_waitforname org.freedesktop.Notifications
