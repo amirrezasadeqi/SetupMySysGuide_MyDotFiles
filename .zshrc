@@ -290,6 +290,20 @@ function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;
 #####################################################################
 #####################################################################
 
+# Enable tab completion for flags
+# bellow line comes from: "https://github.com/athityakumar/colorls"
+# but i checked it and it does not change anything!!(Note that I installed colorls
+# from AUR repos.) 
+
+source $(dirname $(gem which colorls))/tab_complete.sh
+
+# Recommende in official repository of colorls(modified as my favorites):
+# also note that --dark option comes to enable the dracula theme for colorls:
+
+alias lc='colorls --dark'
+alias lca='colorls -a --dark'
+
+
 
 
 

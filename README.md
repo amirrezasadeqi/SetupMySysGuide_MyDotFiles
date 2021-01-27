@@ -62,6 +62,15 @@ In the future ...
 	   key and <Ctrl-hjkl>.
 
 	
+## Note 2021-01-28 01:39:
+I have installed colorls from AUR repositories and dracula (modified it as my 
+favorites) from "https://draculatheme.com/colorls/". adding some aliases for 
+using it in the .zshrc and .bashrc files. also i added the vimium dracula theme
+from dracula official website.
+-TODO: in the not very near future(i spend too much time on config my stuffs.) i
+will replace i3lock with a better option like i3lock-color which as I think has the
+ability for customize its colors.
+
 
 # In Future ...
 
