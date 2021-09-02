@@ -1,0 +1,49 @@
+# This is a file to start the project of scripting for automization of system
+# setup. I started it in the manjaro gnome edition. Let's go ...
+
+List of packages to install
+
+neovim (OFR community)
+figlet (OFR extra)
+xdman (AUR)
+brave-bin (AUR)
+tmux (OFR community)
+awesome-terminal-fonts (OFR community)
+kitty (OFR community)
+yajl (OFR extra) # I think this is neccessary only for manjaro gnome edition 
+				 # for building dwm or ...
+
+
+
+
+
+# neovim setup
+nodejs (OFR community)
+
+
+# manjaro gnome edition specifics
+download themes  and icons from bellow address and copy them in /etc/share/...
+in proper place for system wide use:
+
+https://github.com/ZorinOS
+
+get alot of nice dynamic wallpapers and use them in gnome very simple:
+
+https://github.com/saint-13/Linux_Dynamic_Wallpapers
+
+# git setup
+
+git config --global user.name "amirrezasadeqi" 
+git config --global user.email "e.a.sadeqi@gmail.com" 
+git config --global core.editor nvim
+git config --global commit.gpgsign true
+git config --global credential.helper libsecret
+git config --global user.signingkey <your generated gpg key>
+
+
+
+
+
+
+
+
