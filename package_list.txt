@@ -8,10 +8,39 @@ figlet (OFR extra)
 xdman (AUR)
 brave-bin (AUR)
 tmux (OFR community)
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 awesome-terminal-fonts (OFR community)
 kitty (OFR community)
+cp -r .config/kitty ~/.config # from my setup repository
 yajl (OFR extra) # I think this is neccessary only for manjaro gnome edition 
 				 # for building dwm or ...
+
+picom-jonaburg-git (AUR) # to setup window managers
+cp .config/picom.conf.jonaburg ~/.config/picom.conf
+
+ruby-colorls (AUR)
+cp -r .config/colorls ~/.config
+
+xxh-git (AUR)
+
+rust (OFR extra)
+
+ruby-neovim (AUR)
+
+cpanminus (OFR community)
+
+
+
+oh-my-zsh (From official repository by execution of bellow command which is represented
+in the repository at the current time):
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+copy .zshrc to ~/.
+copy .tmux.conf to ~/.
+copy .Xresources to ~/.
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
 
 
 
@@ -19,6 +48,20 @@ yajl (OFR extra) # I think this is neccessary only for manjaro gnome edition
 
 # neovim setup
 nodejs (OFR community)
+mkdir ~/.config/nvim
+cp init.vim ~/.config/nvim
+cp tasks.ini ~/.config/nvim
+cp coc-settings.json ~/.config/nvim
+mkdir -p ~/.config/nvim/rplugin/python3/
+cp rplugin/python3/neovim_includePlug_draft.py ~/.config/nvim/rplugin/python3
+cp -r task_scripts ~/.config/nvim
+cp -r vimspector_config_samples ~/.config/nvim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+echo "update remote plugins and install plugins in the first neovim run."
+sudo npm install -g neovim
+sudo cpanm -n Neovim::Ext
+sudo cpanm --local-lib=~/perl5 local::lib && eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib)
 
 
 # manjaro gnome edition specifics
@@ -30,6 +73,8 @@ https://github.com/ZorinOS
 get alot of nice dynamic wallpapers and use them in gnome very simple:
 
 https://github.com/saint-13/Linux_Dynamic_Wallpapers
+
+matcha-dark-sea for gnome shell at the momment is a good theme for gnome shell.
 
 # git setup
 
