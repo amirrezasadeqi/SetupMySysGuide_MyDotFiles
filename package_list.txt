@@ -7,10 +7,14 @@
 # List of packages to install
 
 neovim (OFR community)
+htop (OFR extra)
 figlet (OFR extra)
 xdman (AUR)
 brave-bin (AUR)
 tmux (OFR community)
+docker (OFR community)
+lazygit (OFR community)
+spotifyd (OFR community)
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 awesome-terminal-fonts (OFR community)
 kitty (OFR community)
@@ -45,6 +49,24 @@ nitrogen (OFR extra) # for window managers
 ttf-blex-nerd-font-git (AUR)
 nerd-fonts-ubuntu-mono (AUR)
 
+i3-gaps (OFR community) (Install all of the optional deps except rxvt-unicode and dmenu)
+conky-i3 (OFR community)
+i3status-manjaro (OFR community)
+i3exit (OFR community) # the blurlock works bad. use yourself instead.
+i3-help (OFR community)
+i3-scripts (OFR community)
+morc_menu (OFR community)
+volumeicon (OFR community)
+i3-scrot (OFR community)
+clipit (OFR community)
+copyq (OFR community)
+mocp-scrobbler (AUR)
+mocp-themes-git (AUR)
+pcmanfm (OFR community)
+dunst (OFR community)
+
+
+
 
 oh-my-zsh (From official repository by execution of bellow command which is represented
 in the repository at the current time):
@@ -58,6 +80,11 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/esc/conda-zsh-completion ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/conda-zsh-completion
 
 
+# setup i3 window manager
+
+mkdir ~/.i3
+cp .i3/config ~/.i3/
+copy .config/dunst/dunstrc ~/.config/
 
 
 
@@ -110,6 +137,9 @@ mkdir ~/.dwm
 cp .dwm/autostart.sh ~/.dwm 
 cp .dwm/bar.sh ~/.dwm
 cp .dwm/config ~/.dwm
+# check if there is a blurlock form i3exit, first remove it by:
+rm /usr/bin/blurlock
+# then copy my own blurlock instead by:
 sudo cp .dwm/blurlock /usr/bin
 sudo cp .dwm/sysact /usr/bin
 sudo cp .dwm/dwm.desktop /usr/share/xsessions/dwm.desktop
@@ -149,21 +179,6 @@ cd dmenu-distrotube
 git checkout asModification
 sudo make install
 cd ..
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
