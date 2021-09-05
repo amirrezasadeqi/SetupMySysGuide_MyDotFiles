@@ -29,6 +29,7 @@ ruby-neovim (AUR)
 
 cpanminus (OFR community)
 
+python2 (OFR extra)
 
 
 oh-my-zsh (From official repository by execution of bellow command which is represented
@@ -62,6 +63,7 @@ echo "update remote plugins and install plugins in the first neovim run."
 sudo npm install -g neovim
 sudo cpanm -n Neovim::Ext
 sudo cpanm --local-lib=~/perl5 local::lib && eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib)
+pip2 install pynvim
 
 
 # manjaro gnome edition specifics
