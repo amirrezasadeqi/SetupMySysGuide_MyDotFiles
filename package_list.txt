@@ -1,7 +1,10 @@
 # This is a file to start the project of scripting for automization of system
 # setup. I started it in the manjaro gnome edition. Let's go ...
 
-List of packages to install
+# Note: I have installed all of the optional dependencies also.
+
+
+# List of packages to install
 
 neovim (OFR community)
 figlet (OFR extra)
@@ -30,6 +33,14 @@ ruby-neovim (AUR)
 cpanminus (OFR community)
 
 python2 (OFR extra)
+
+polybar-dwm-module (AUR)
+
+log4cxx-git (AUR) # at the momment ros-melodic works with this version of log4xx
+
+pamixer (OFR community)
+
+nitrogen (OFR extra) # for window managers
 
 
 oh-my-zsh (From official repository by execution of bellow command which is represented
@@ -86,6 +97,57 @@ git config --global core.editor nvim
 git config --global commit.gpgsign true
 git config --global credential.helper libsecret
 git config --global user.signingkey <your generated gpg key>
+
+# setup dwm window manager
+
+git clone https://github.com/amirrezasadeqi/dwm.git
+cd dwm
+git checkout asModification
+mkdir ~/.dwm
+cp .dwm/autostart.sh ~/.dwm 
+cp .dwm/bar.sh ~/.dwm
+cp .dwm/config ~/.dwm
+sudo cp .dwm/blurlock /usr/bin
+sudo cp .dwm/sysact /usr/bin
+sudo cp .dwm/dwm.desktop /usr/share/xsessions/dwm.desktop
+sudo make install
+cd ..
+git clone https://github.com/LukeSmithxyz/voidrice.git
+cd voidrice 
+sudo cp -r -n -v .local/bin/* /usr/bin/
+cd ..
+
+
+# setup st terminal
+
+git clone https://github.com/amirrezasadeqi/st.git
+cd st
+git checkout asModification
+sudo make install
+cd ..
+
+# setup dmenu
+
+git clone https://gitlab.com/e.a.sadeqi/dmenu-distrotube.git
+cd dmenu-distrotube
+git checkout asModification
+sudo make install
+cd ..
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
