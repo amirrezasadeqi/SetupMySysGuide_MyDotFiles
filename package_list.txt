@@ -127,6 +127,7 @@ git config --global core.editor nvim
 git config --global commit.gpgsign true
 git config --global credential.helper libsecret
 git config --global user.signingkey <your generated gpg key>
+export GPG_TTY=$(tty)
 
 # setup dwm window manager
 
