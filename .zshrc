@@ -303,7 +303,10 @@ source $(dirname $(gem which colorls))/tab_complete.sh
 alias lc='colorls --dark'
 alias lca='colorls -a --dark'
 
-
+#####################################################################
+#####################################################################
+# solves the issue of not signing git commits.
+export GPG_TTY=$TTY
 
 
 
