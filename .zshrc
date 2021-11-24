@@ -308,7 +308,8 @@ alias lca='colorls -a --dark'
 # solves the issue of not signing git commits.
 export GPG_TTY=$TTY
 
-
+# Adding the path of neovim nightly
+export PATH="$HOME/ManBuild_Packs/neovim/bin:$PATH"
 
 #####################################################################
 #####################################################################
