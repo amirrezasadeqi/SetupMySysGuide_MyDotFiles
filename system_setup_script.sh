@@ -12,7 +12,7 @@ if [ "$yn" != "y" ]; then
   exit
 fi
 
-_cwd = "$(pwd)"
+_cwd="$(pwd)"
 
 echo "Updating the System"
 pamac update -a
@@ -91,7 +91,7 @@ echo "setup tmux"
 if [ -f "$HOME/.tmux.conf" ]; then
   mv $HOME/.tmux.conf $HOME/.tmux.conf.backup
 fi
-cp _cwd/.tmux.conf $HOME
+cp $_cwd/.tmux.conf $HOME
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Install tmux plugins by pressing prefix+I in a tmux session."
 
@@ -99,19 +99,19 @@ echo "Copying kitty configs"
 if [ -d "$HOME/.config/kitty" ]; then
   mv $HOME/.config/kitty $HOME/.config/kitty.backup
 fi
-cp -r _cwd/.config/kitty ~/.config
+cp -r $_cwd/.config/kitty ~/.config
 
 echo "Copying picom configs"
 if [ -f "$HOME/.config/picom.conf" ]; then
   mv $HOME/.config/picom.conf $HOME/.config/picom.conf.backup
 fi
-cp _cwd/.config/picom.conf.jonaburg ~/.config/picom.conf
+cp $_cwd/.config/picom.conf.jonaburg ~/.config/picom.conf
 
 echo "Copying colorls configs"
 if [ -d "$HOME/.config/colorls" ]; then
   mv $HOME/.config/colorls $HOME/.config/colorls.backup
 fi
-cp -r _cwd/.config/colorls ~/.config
+cp -r $_cwd/.config/colorls ~/.config
 
 echo "Setup ZSH"
 echo "Installing oh-my-zsh"
@@ -122,8 +122,8 @@ fi
 if [ -f "$HOME/.Xresources" ]; then
   mv $HOME/.Xresources $HOME/.Xresources.backup
 fi
-cp _cwd/.zshrc $HOME
-cp _cwd/.Xresources $HOME
+cp $_cwd/.zshrc $HOME
+cp $_cwd/.Xresources $HOME
 
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -135,8 +135,8 @@ if [ -d "$HOME/.i3" ]; then
   mv $HOME/.i3 $HOME/.i3.backup
 fi
 mkdir $HOME/.i3
-cp _cwd/.i3/config $HOME/.i3/
-cp _cwd/.config/dunst/dunstrc $HOME/.config/
+cp $_cwd/.i3/config $HOME/.i3/
+cp $_cwd/.config/dunst/dunstrc $HOME/.config/
 
 echo "Setup git"
 git config --global user.name "amirrezasadeqi" 
