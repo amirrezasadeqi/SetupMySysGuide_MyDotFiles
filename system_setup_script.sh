@@ -268,13 +268,13 @@ git clone https://github.com/LukeSmithxyz/voidrice.git
 cd $HOME/ManBuild_Packs/voidrice
 sudo cp -r -n -v $HOME/ManBuild_Packs/voidrice/.local/bin/* /usr/bin/
 sudo touch /etc/X11/xorg.conf.d/30-touchpad.conf
-cat << EOF >> /etc/X11/xorg.conf.d/30-touchpad.conf
+sudo bash -c 'cat << EOF >> /etc/X11/xorg.conf.d/30-touchpad.conf
 Section "InputClass"
     Identifier "touchpad catchall"
     Driver "libinput"
     Option "Tapping" "on"
 EndSection
-EOF
+EOF'
 
 echo
 echo "installing some nice dynamic wallpapers"
@@ -298,6 +298,12 @@ echo "The path of this neovim installation is exported at the end of your .zshrc
 echo "otherwise add bellow command to your rc file:"
 echo "export PATH=\"\$HOME/path/to/neovim/nightly/bin:\$PATH\""
 echo "update remote plugins and install plugins in the first neovim run."
+
+echo
+echo "you must change your shell after this script by running bellow command:"
+echo "chsh -s \$(which zsh)"   
+echo "logout and log back then to have zsh."
+echo
 
 echo
 echo -n "Reboot? [Y|n] "
