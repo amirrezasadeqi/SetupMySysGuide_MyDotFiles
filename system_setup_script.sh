@@ -145,7 +145,17 @@ cp -r $_cwd/.config/colorls ~/.config
 echo
 echo "Setup ZSH"
 echo "Installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo
+
+# based on the oh my zsh repository readme file using --unattended flag does not cause exiting the main install script.
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+echo
+echo "you must change your shell after this script by running bellow command:"
+echo "chsh -s \$(which zsh)"   
+echo "logout and log back then to have zsh."
+echo
+
 if [ -f "$HOME/.zshrc" ]; then
   mv $HOME/.zshrc $HOME/.zshrc.backup
 fi
