@@ -277,6 +277,14 @@ EndSection
 EOF'
 
 echo
+echo "Installing zorin os icon themes"
+
+cd $HOME/ManBuild_Packs
+git clone https://github.com/ZorinOS/zorin-icon-themes.git
+cd $HOME/ManBuild_Packs/zorin-icon-themes
+sudo cp -r * /usr/share/icons
+
+echo
 echo "installing some nice dynamic wallpapers"
 if [ -d "/usr/share/backgrounds/Dynamic_Wallpapers" ]; then
   sudo rm -r /usr/share/backgrounds/Dynamic_Wallpapers
