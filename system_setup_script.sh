@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 echo "This script has been tested only on Linux Manjaro Gnome."
-echo "Note: Before Running the script restore your gpg and ssh keys!"
-echo "Note: I think this needs sudo permission!"
 
 echo
 echo -n "Should we start? [Y|n] "
@@ -17,78 +15,56 @@ _cwd="$(pwd)"
 
 echo
 echo "Updating the System"
-pamac update -a
+sudo pacman -Syu
+echo
+echo "Installing yay"
+sudo pacman -S --noconfirm --needed yay
 
-PKGS=(
+EX_PKGS=(
+  # packages from Official repositories.
   # 'neovim'
   'nodejs'
   'htop'
-  'figlet'
-  'tmux'
   'docker'
-  'awesome-terminal-fonts'
   'kitty'
   'alacritty'
+  'figlet'
+  'tmux'
+  'awesome-terminal-fonts'
   'yajl'
   'ctags'
+  'global'
   'cmake'
   'rust'
+  'lldb'
+  'gdb'
   # 'cpanminus'
   # 'python2'
   'pamixer'
   'nitrogen'
-  'conky-i3'
-  'i3exit'
-  'i3-help'
-  'i3-scripts'
   'volumeicon'
-  'i3-scrot'
+  'pcmanfm'
   'clipit'
   'copyq'
-  'pcmanfm'
   'dunst'
   'python-pip'
-  'yay'
   'base-devel'
-)
-
-echo
-echo "Installing Some repository packages that would be needed in anywhere of my setup"
-
-for PKG in "${PKGS[@]}"; do
-  echo
-  echo "INSTALLING: ${PKG} with all of its optional dependencies."
-  sudo pacman -S --noconfirm --needed "$PKG"
-  sudo pacman -S --noconfirm --asdeps --needed $(pacman -Si "$PKG" | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.*://g' | sed 's/^\s*//g' | tr '\n' ' ')
-done
-
-echo
-echo "INSTALLING brave-browser not all of its dependencies."
-sudo pacman -S --noconfirm --needed brave-browser
-sudo pacman -S --noconfirm --asdeps --needed cups libgnome-keyring
-
-echo
-echo "INSTALLING global not all of its dependencies."
-sudo pacman -S --noconfirm --needed global
-sudo pacman -S --noconfirm --asdeps --needed ctags python-pygments vim emacs
-
-echo
-echo "INSTALLING i3-gaps not all of its dependencies."
-sudo pacman -S --noconfirm --needed i3-gaps
-sudo pacman -S --noconfirm --asdeps --needed i3lock i3status-manjaro perl-json-xs perl-anyevent-i3
-
-echo
-echo "INSTALLING morc_menu not all of its dependencies."
-sudo pacman -S --noconfirm --needed morc_menu
-sudo pacman -S --noconfirm --asdeps --needed wmutils xdotool rootmenu
-
-AUR_PKGS=(
+  'vim'
+  'emacs'
+  'i3-gaps'
+  'morc_menu'
+  
+  # packages from AUR repositories
   'xdman'
+  'brave-browser'
   'picom-jonaburg-git'
   'tmuxinator'
   'ruby-colorls'
   'ruby-neovim'
-  'polybar-dwm-module'
+  'polybar-dwm-module' 
+  'ttf-unifont'
+  'siji-git'
+  'xorg-fonts-misc'
   'log4cxx-git' # at the momment ros-melodic works with this version of log4xx
   'ttf-blex-nerd-font-git'
   'nerd-fonts-ubuntu-mono'
@@ -98,14 +74,58 @@ AUR_PKGS=(
   'zorin-desktop-themes'
 )
 
-echo
-echo "Installing Some AUR packages that would be needed in anywhere of my setup"
+OP_PKGS=(
+  'npm'
+  'lm_sensors'
+  'lsof'
+  'strace'
+  'btrfs-progs'
+  'pigz'
+  'imagemagick'
+  'libcanberra'
+  'ncurses'
+  'qt6-base'
+  'lightdm-gtk-greeter'
+  'xarchiver'
+  'dunstify'
+  'dbus'
+  'xorg-xwininfo'
+  'xorg-xprop'
+  'python'
+  'zsh-completions'
+  'cups' 
+  'libgnome-keyring'
+  'python-pygments'
+  'i3lock'
+  'i3status-manjaro'
+  'perl-json-xs'
+  'perl-anyevent-i3'
+  'conky-i3'
+  'i3exit'
+  'i3-help'
+  'i3-scripts'
+  'i3-scrot'
+  'wmutils'
+  'xdotool'
+  'rootmenu'
+)
 
-for AUR_PKG in "${AUR_PKGS[@]}"; do
+echo
+echo "Installing Explicitly Some packages that would be needed in anywhere of my setup"
+
+for PKG in "${EX_PKGS[@]}"; do
   echo
-  echo "Building and Installing: ${AUR_PKG}"
-  yay -S --noconfirm --needed "$AUR_PKG"
-  yay -S --noconfirm --asdeps --needed $(yay -Si "$AUR_PKG" | sed -n '/^Opt/,/^Conf/p' | sed '$d' | sed 's/^Opt.*://g' | sed 's/^\s*//g' | tr '\n' ' ')
+  echo "INSTALLING Explicitly: ${PKG}"
+  yay -S --noconfirm --needed "$PKG"
+done
+
+echo
+echo "Installing Some packages as optional dependencies for Explicitly installed packages"
+
+for PKG in "${OP_PKGS[@]}"; do
+  echo
+  echo "INSTALLING Optionally: ${PKG}"
+  yay -S --noconfirm --asdeps --needed "$PKG"
 done
 
 echo
