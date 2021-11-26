@@ -245,12 +245,15 @@ echo "Neovim Nightly is in your service!"
 
 echo
 echo "Build and config dmenu"
+read -p "You may need to turn on your VPN for cloning from gitlab. If you are OK, Press enter to continue"
 cd $HOME/ManBuild_Packs
 git clone https://gitlab.com/e.a.sadeqi/dmenu-distrotube.git
 cd $HOME/ManBuild_Packs/dmenu-distrotube
 git checkout asModification
 sudo make install
+echo
 echo "dmenu is ready"
+read -p "Now you can turn off your VPN for faster download. If you are OK, Press enter to continue"
 
 echo
 echo "Build and config st terminal"
