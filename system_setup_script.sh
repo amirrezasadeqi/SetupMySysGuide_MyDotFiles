@@ -2,6 +2,13 @@
 
 echo "This script has been tested only on Linux Manjaro Gnome."
 
+# It is found a better way to install all optional dependencies for a package
+# and in future it will be used for some packages. That way is 'awk' and bellow
+# command. This command will list all optional dependencies for a package and
+# you can pass it to 'yay -S --asdeps ...' command to install all of them:
+# yay -Si <package_name> | awk '/Optional/,/Conflicts/' | awk '$0 !~ /Conflicts/' | awk -F':' 'NR == 1 && NF == 3 {print $(NF-1)};NR == 1 && NF == 2 {print $NF}; NR>1 {print $1}' | awk '{gsub(/ /,"");print}' ORS=" "
+# Note that this command is not widely tested but it seems to work well.
+
 echo
 echo -n "Should we start? [Y|n] "
 read yn
