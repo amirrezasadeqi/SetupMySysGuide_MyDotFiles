@@ -60,7 +60,9 @@ EX_PKGS=(
   'emacs'
   'i3-gaps'
   'morc_menu'
-  
+  'ripgrep'
+  'fd'
+
   # packages from AUR repositories
   'xdman'
   'brave-browser'
@@ -154,6 +156,25 @@ if [ -d "$HOME/.config/kitty" ]; then
   mv $HOME/.config/kitty $HOME/.config/kitty.backup
 fi
 cp -r $_cwd/.config/kitty ~/.config
+echo "cloning kitty themes"
+git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+echo
+ln -s ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
+echo
+echo "kitty is at your service."
+
+echo
+echo "Copying alacritty configs"
+if [ -d "$HOME/.config/alacritty" ]; then
+  mv $HOME/.config/alacritty $HOME/.config/alacritty.backup
+fi
+cp -r $_cwd/.config/alacritty $HOME/.config
+echo "cloning alacritty themes"
+echo
+git clone https://github.com/eendroroy/alacritty-theme.git $HOME/.config/alacritty/theme_collection
+echo
+echo "alacritty is at your service."
+
 
 echo
 echo "Copying picom configs"
@@ -313,6 +334,19 @@ cd $HOME/ManBuild_Packs
 git clone https://github.com/ZorinOS/zorin-icon-themes.git
 cd $HOME/ManBuild_Packs/zorin-icon-themes
 sudo cp -r * /usr/share/icons
+
+echo
+echo "Installing DOOM emacs"
+echo
+if [ -d "$HOME/.emacs.d" ]; then
+  mv $HOME/.emacs.d $HOME/.emacs.d.backup
+fi
+git clone --depth 1 https://github.com/hlissner/doom-emacs $HOME/.emacs.d
+echo
+echo "Run bellow command to install complete. Not tested yet so was commented."
+echo "~/.emacs.d/bin/doom install"
+echo "In future you should copy your custom configurations in this point."
+echo
 
 echo
 echo "installing some nice dynamic wallpapers"
