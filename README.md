@@ -74,6 +74,6 @@ ability for customize its colors.
 
 # In Future ...
 
-
+## Add GNU STOW for management of dotfiles!
 
 
