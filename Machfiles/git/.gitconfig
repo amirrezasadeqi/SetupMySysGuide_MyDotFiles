@@ -1,0 +1,10 @@
+[user]
+	name = amirrezasadeqi
+	email = e.a.sadeqi@gmail.com
+	signingkey = 84BF195D931A92EE
+[core]
+	editor = nvim
+[commit]
+	gpgsign = true
+[credential]
+	helper = libsecret

@@ -1,0 +1,52 @@
+# Dracula themed dark color settings for colorls
+#
+# ~/.config/colorls/dark_colors.yaml
+# modified by e.a.sadeqi 2021-01-28 00:48
+#
+# Main Colors
+unrecognized_file: '#ffd900' # Orange
+recognized_file:   '#f8f8f2' # Foreground
+dir:               '#c18bff' # Purple
+
+# Link
+dead_link: '#ff9580'         # Red
+link:      '#80ffea'         # Cyan
+
+# Special Files
+socket:    '#aaff00'         # Green
+blockdev:  '#aaff00'         # Green
+chardev:   '#aaff00'         # Green
+
+# Access Modes
+write:     '#ef95e1'         # Pink
+read:      '#c18bff'         # Purple
+exec:      '#80ffea'         # Cyan
+no_access: '#ff9580'         # Red
+
+# Age
+hour_old:    '#95a5d7'       # Comment - 20% lighter
+day_old:     '#6272a4'       # Comment
+no_modifier: '#44475a'       # Current Line
+
+# File Size
+file_large:  '#ff9580'       # Red
+file_medium: '#ffd900'       # Orange
+file_small:  '#aaff00'       # Green
+
+# Random
+report: '#aaff00'            # Green
+user:   '#80ffea'            # Cyan
+tree:   '#44475a'            # Current Line
+empty:  '#6272a4'            # Comment
+error:  '#ff9580'            # Red
+normal: '#f8f8f2'            # Foreground
+
+# Git
+addition:     '#80ffea'      # Cyan
+modification: '#f1fa8c'      # Yellow
+deletion:     '#ff9580'      # Red
+untracked:    '#ffd900'      # Orange
+unchanged:    '#aaff00'      # Green
+
+
+

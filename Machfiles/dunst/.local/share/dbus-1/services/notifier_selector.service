@@ -1,0 +1,4 @@
+#comment: ~/.local/share/dbus-1/services/notifier_selector.service
+[D-BUS Service]
+Name=org.freedesktop.Notifications
+Exec=/usr/bin/select_notifier

@@ -1,0 +1,7 @@
+import:
+  - /home/areza/.config/alacritty/theme_collection/themes/one_dark.yaml
+window:
+  decorations: none
+font:
+  normal:
+    family: JetBrainsMono Nerd Font
