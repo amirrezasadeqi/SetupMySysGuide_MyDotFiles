@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# /usr/bin/sysact
+# 2021-01-24 03:18
+
+# note that i got this from the lukesmithxyz repos:
+# "LukeSmithxyz/voidrice". i have also added all of the scripts from this repo
+# in the .local/bin/statusbar directory to my /usr/bin folder, because these 
+# scripts were for working with dwmblocks modules and to use the dwm build of the
+# lukesmithxyz we needed to have these scripts and commands in my system. so i ignore 
+# copying these scripts to my git repo.
+
+# A dmenu wrapper script for system functions.
+
+# For non-systemd init systems.
+case "$(readlink -f /sbin/init)" in
+	*runit*) hib="sudo -A zzz" ;;
+	*openrc*) reb="sudo -A openrc-shutdown -r"; shut="sudo -A openrc-shutdown -p" ;;
+esac
+
+cmds="\
+🔒 lock		blurlock
+  leave_dwm	kill -TERM $(pgrep -u $USER "\bdwm$")
+  renew_dwm	kill -HUP $(pgrep -u $USER "\bdwm$")
+ hibernate	${hib:-systemctl suspend-then-hibernate -i}
+ reboot	${reb:-sudo -A reboot}
+ shutdown	${shut:-sudo -A shutdown -h now}"
+
+choice="$(echo "$cmds" | cut -d'	' -f 1 | dmenu)" || exit 1
+
+`echo "$cmds" | grep "^$choice	" | cut -d '	' -f2-`

@@ -1,0 +1,11 @@
+# /usr/share/xsessions/dwm.desktop
+# 2021-01-24 03:09
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=dwm
+Comment=Dynamic window manager
+Exec=dwm
+TryExec=dwm
+Icon=dwm
+Type=XSession
