@@ -20,9 +20,7 @@ echo
 
 echo "Installing packages..."
 echo 
-sudo apt-get install build-essential python3 python3-pip python3-neovim libevent-dev ruby-dev htop tmux tmuxinator global universal-ctags cscope emacs nodejs npm zsh openconnect network-manager-openconnect-gnome git make ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen kitty alacritty libyajl-dev lldb gdb nitrogen ranger clipit copyq dunst vim volumeicon-alsa pamix ripgrep fd-find fzf bison strace libncurses-dev xdotool i3 i3blocks conky stow unzip wget libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev  libpcre2-dev  libevdev-dev uthash-dev libev-dev libx11-xcb-dev
-sudo apt-get install cmake-data pkg-config python3-sphinx python3-packaging libuv1-dev libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev
-sudo apt-get install libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev i3-wm libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev
+sudo apt-get install build-essential python3 python3-pip python3-neovim libevent-dev ruby-dev htop tmux tmuxinator global universal-ctags cscope emacs nodejs npm zsh openconnect network-manager-openconnect-gnome git make ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen kitty libyajl-dev lldb gdb nitrogen ranger clipit copyq dunst vim volumeicon-alsa pamix ripgrep fd-find fzf bison strace libncurses-dev xdotool i3 i3blocks conky stow unzip wget libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev  libpcre2-dev  libevdev-dev uthash-dev libev-dev libx11-xcb-dev cmake-data pkg-config python3-sphinx python3-packaging libuv1-dev libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev i3-wm libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev libxft-dev libxinerama-dev libharfbuzz-dev
 
 echo
 echo "Installing fzf ..."
@@ -92,6 +90,8 @@ echo
 echo "Install tmux plugins by pressing prefix+I in a tmux session."
 echo
 
+mkdir $HOME/ManBuild_Packs
+
 echo
 echo "Copying kitty configs"
 if [ -d "$HOME/.config/kitty" ]; then
@@ -99,13 +99,32 @@ if [ -d "$HOME/.config/kitty" ]; then
 fi
 stow -d ~/Machfiles kitty
 echo "cloning kitty themes"
-git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+#git clone --depth 1 git@github.com:dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+cd $HOME/ManBuild_Packs
+wget https://github.com/dexpota/kitty-themes/archive/refs/heads/master.zip
+unzip master.zip
+rm master.zip
+mv kitty-themes-master $HOME/.config/kitty/kitty-themes
 echo
-ln -s ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
+#ln -s ~/.config/kitty/kitty-themes/themes/Dracula.conf ~/.config/kitty/theme.conf
 echo
 echo "kitty is at your service."
 
 echo
+echo "Installing alacritty."
+echo 
+cd $HOME/ManBuild_Packs
+git clone https://github.com/alacritty/alacritty.git
+cd alacritty
+sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+cargo build --release
+sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
+sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+sudo desktop-file-install extra/linux/Alacritty.desktop
+sudo update-desktop-database
+sudo mkdir -p /usr/local/share/man/man1
+gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
+gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz > /dev/null
 echo "Copying alacritty configs"
 if [ -d "$HOME/.config/alacritty" ]; then
   mv $HOME/.config/alacritty $HOME/.config/alacritty.backup
@@ -175,7 +194,6 @@ echo "git config --global user.signingkey <your generated gpg key>"
 echo "you can find your gpg key by running bellow command:"
 echo "gpg --list-secret-keys --keyid-format=long"
 
-mkdir $HOME/ManBuild_Packs
 echo
 echo "Building Customized or specific packages"
 echo "Building neovim nightly edition"
@@ -253,6 +271,7 @@ echo
 
 echo
 echo "Build and config dwm"
+sudo apt-get install libx11-dev libxinerama-dev libxft-dev libx11-xcb-dev libxcb-res0-dev
 cd $HOME/ManBuild_Packs
 git clone https://github.com/amirrezasadeqi/dwm.git
 cd dwm
