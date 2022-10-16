@@ -19,34 +19,44 @@ sudo apt-get update
 echo
 
 echo "Installing packages..."
-echo 
-sudo apt-get install build-essential python3 python3-pip python3-neovim libevent-dev ruby-dev htop tmux tmuxinator global universal-ctags cscope emacs nodejs npm zsh openconnect network-manager-openconnect-gnome git make ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen kitty libyajl-dev lldb gdb nitrogen ranger clipit copyq dunst vim volumeicon-alsa pamix ripgrep fd-find fzf bison strace libncurses-dev xdotool i3 i3blocks conky stow unzip wget libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev  libpcre2-dev  libevdev-dev uthash-dev libev-dev libx11-xcb-dev cmake-data pkg-config python3-sphinx python3-packaging libuv1-dev libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev i3-wm libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev libxft-dev libxinerama-dev libharfbuzz-dev
+echo
+sudo apt-get install build-essential python3 python3-pip python3-neovim libevent-dev ruby-dev htop tmux tmuxinator global universal-ctags cscope emacs nodejs npm zsh openconnect network-manager-openconnect-gnome git make ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen kitty libyajl-dev lldb gdb nitrogen ranger clipit copyq dunst vim volumeicon-alsa pamix ripgrep fd-find fzf bison strace libncurses-dev xdotool i3 i3blocks conky stow unzip wget libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev cmake-data pkg-config python3-sphinx python3-packaging libuv1-dev libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev i3-wm libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev libxft-dev libxinerama-dev libharfbuzz-dev shfmt clang clang-format clangd clang-tidy clang-tools
+
+# if you want to setup docker with nvidia support
+#sudo apt-get install nvidia-driver-470
+#docker installation guide:
+#https://docs.docker.com/engine/install/ubuntu/
+#https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+#https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-on-ubuntu-and-debian
 
 echo
 echo "Installing fzf ..."
-echo 
+echo
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
-echo 
-
-echo "Setup npm based on lunarvim setup ..."
-echo 
-mkdir ~/.npm-global
-npm config set prefix '~/.npm-global'
-echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.profile
-source ~/.profile
-
-echo 
-echo "Installing rust ... "
-echo 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 echo
 
-echo 
+echo "Setup npm based on lunarvim setup ..."
+echo
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+echo 'export PATH=~/.npm-global/bin:$PATH' >>~/.profile
+source ~/.profile
+
+echo
+echo "Installing rust ... "
+echo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+echo
+echo "Insall rustfmt ..."
+rustup component add rustfmt
+echo
+
+echo
 echo "Installing colorls..."
-echo 
+echo
 sudo gem install colorls
-echo 
+echo
 
 echo "[-] Download fonts [-]"
 echo "JetBrains nerd fonts..."
@@ -58,7 +68,7 @@ echo "Blex Mono nerd fonts..."
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/IBMPlexMono.zip
 sudo unzip IBMPlexMono.zip -d /usr/local/share/fonts
 rm IBMPlexMono.zip
-echo 
+echo
 fc-cache -fv
 echo "done!"
 
@@ -112,7 +122,7 @@ echo "kitty is at your service."
 
 echo
 echo "Installing alacritty."
-echo 
+echo
 cd $HOME/ManBuild_Packs
 git clone https://github.com/alacritty/alacritty.git
 cd alacritty
@@ -123,8 +133,8 @@ sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
 sudo desktop-file-install extra/linux/Alacritty.desktop
 sudo update-desktop-database
 sudo mkdir -p /usr/local/share/man/man1
-gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
-gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz > /dev/null
+gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz >/dev/null
+gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz >/dev/null
 echo "Copying alacritty configs"
 if [ -d "$HOME/.config/alacritty" ]; then
   mv $HOME/.config/alacritty $HOME/.config/alacritty.backup
@@ -146,7 +156,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 echo
 echo "you must change your shell after this script by running bellow command:"
-echo "chsh -s \$(which zsh)"   
+echo "chsh -s \$(which zsh)"
 echo "logout and log back then to have zsh."
 echo
 
@@ -182,8 +192,8 @@ stow -d ~/Machfiles dunst
 
 echo
 echo "Setup git"
-git config --global user.name "amirrezasadeqi" 
-git config --global user.email "e.a.sadeqi@gmail.com" 
+git config --global user.name "amirrezasadeqi"
+git config --global user.email "e.a.sadeqi@gmail.com"
 git config --global core.editor nvim
 git config --global commit.gpgsign true
 git config --global credential.helper libsecret
@@ -215,8 +225,11 @@ fi
 git clone --branch plua https://github.com/amirrezasadeqi/nvim_configs.git $HOME/.config/nvim
 echo
 echo "installing somethings for more oks in checkhealth!"
-sudo npm install -g neovim
-pip install pynvim
+npm install -g neovim
+npm install -g prettier
+pip3 install --upgrade pynvim
+pip3 install --upgrade autopep8
+cargo install stylua
 echo
 echo "update remote plugins and install plugins in the first neovim run."
 echo "Neovim Nightly is in your service!"
@@ -244,7 +257,7 @@ echo "st is ready"
 
 echo
 echo "Build and config jonaburg picom"
-echo 
+echo
 cd $HOME/ManBuild_Packs
 git clone https://github.com/jonaburg/picom
 cd picom
@@ -262,7 +275,7 @@ echo
 
 echo
 echo "Build and config polybar"
-echo 
+echo
 cd $HOME/ManBuild_Packs
 git clone https://github.com/mihirlad55/polybar-dwm-module
 cd polybar-dwm-module
@@ -316,7 +329,7 @@ echo "update remote plugins and install plugins in the first neovim run."
 
 echo
 echo "you must change your shell after this script by running bellow command:"
-echo "chsh -s \$(which zsh)"   
+echo "chsh -s \$(which zsh)"
 echo "logout and log back then to have zsh."
 echo
 
@@ -330,4 +343,3 @@ if [ "$yn" != "y" ]; then
 fi
 
 reboot
-
